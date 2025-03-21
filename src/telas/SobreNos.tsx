@@ -15,6 +15,7 @@ export default function SobreNos(){
     return <ScrollView style={estilos.fundo}>
         <StatusBar />
         <Image source={require('../../assets/logo.png')} style={estilos.logo} resizeMode="contain"/>
+        <Texto style={estilos.titulo}> * Conheça a nossa história * </Texto>
         <Texto style={estilos.texto_sobre}>
             A Sil Fazendo Arte é uma empresa que começou durante a pandemia de 2020 para distração e relaxamento de sua proprietária, Silvia, porém o dom dela não passou despercebido e começou a chamar atenção dos familiares, amigos, amigos dos amigos, familiares dos amigos e por aí seguiu!
             {'\n'}{'\n'}
@@ -42,6 +43,13 @@ const estilos = StyleSheet.create({
     },
     texto_sobre:{
         color: "white",
+    },
+    titulo: {
+        textAlign: "center",
+        color: "white",
+        fontSize: 24,
+        fontWeight: "bold",
+        paddingBottom: 10,
     },
     img_sobre: {
         height: 400,
