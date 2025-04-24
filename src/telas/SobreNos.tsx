@@ -8,8 +8,8 @@ export default function SobreNos(){
 
     //Indica o vídeo e coloca ele em loop
     const player = useVideoPlayer('https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', player => {
-        player.loop = true,
-        player.play()
+        player.loop = true
+        //player.play()
     })
 
     return <ScrollView style={estilos.fundo}>

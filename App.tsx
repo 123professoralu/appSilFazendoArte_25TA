@@ -10,6 +10,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import SobreNos from "./src/telas/SobreNos";
 
+//Menu PRODUTOS
+import Produto from './src/telas/Produtos';
+import MockProdutos from './src/mocks/listaProduto';
+
+function MenuProdutos(){
+  return <Produto {...MockProdutos} />
+}
+
 //Configuração do Menu
 const Tab = createBottomTabNavigator();
 
@@ -17,7 +25,7 @@ function Menu() {
   return <Tab.Navigator
               screenOptions={({route})=>({
                   tabBarIcon: ({focused, color, size})=>{
-                    let iconName;
+                    let iconName: any;
 
                     if(route.name ==="Sobre Nós"){
                       iconName = focused
@@ -43,7 +51,7 @@ function Menu() {
                   headerShown: false,
               })}>
             <Tab.Screen name="Sobre Nós" component={SobreNos} />
-            <Tab.Screen name="Produtos" component={SobreNos} />
+            <Tab.Screen name="Produtos" component={MenuProdutos} />
             <Tab.Screen name="Lista de Desejos" component={SobreNos} />
             <Tab.Screen name="Perfil" component={SobreNos} />
         </Tab.Navigator>
