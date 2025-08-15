@@ -3,19 +3,44 @@ import { useFonts,
          Montserrat_400Regular, 
          Montserrat_700Bold } 
          from "@expo-google-fonts/montserrat";
-import { View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useAudioPlayer } from "expo-audio";
 
 import SobreNos from "./src/telas/SobreNos";
+import Texto from "./src/componentes/Texto";
+import Styles from "./src/telas/estiloGeral";
 
 //Menu PRODUTOS
 import Produto from './src/telas/Produtos';
 import MockProdutos from './src/mocks/listaProduto';
 
+//Menu Perfil
+import Perfil from './src/telas/Perfil';
+
 function MenuProdutos(){
   return <Produto {...MockProdutos} />
+}
+
+//Função para execução do áudio
+function MenuAudio(){
+  const audioSource = require('./assets/acdc_highway_to_hell.mp3');
+  const player = useAudioPlayer(audioSource);
+
+  //Configuração o controle liga/desliga
+  const onOff = () => {
+    if(player.playing) {
+      player.pause();
+    } else {
+      player.play();
+    }
+  }
+
+  return <TouchableOpacity onPress={onOff}>
+              <Texto style={Styles.botaoAudio}>🎧 On/Off</Texto>
+          </TouchableOpacity>
 }
 
 //Configuração do Menu
@@ -53,7 +78,7 @@ function Menu() {
             <Tab.Screen name="Sobre Nós" component={SobreNos} />
             <Tab.Screen name="Produtos" component={MenuProdutos} />
             <Tab.Screen name="Lista de Desejos" component={SobreNos} />
-            <Tab.Screen name="Perfil" component={SobreNos} />
+            <Tab.Screen name="Perfil" component={Perfil} />
         </Tab.Navigator>
 }
 
@@ -69,6 +94,7 @@ export default function App() {
   }
 
   return <NavigationContainer>
-              <Menu />
+            <Menu />
+            <MenuAudio/>
         </NavigationContainer>
 }

@@ -74,6 +74,17 @@ const estilosProdutos = StyleSheet.create({
         color: "white",
         textAlign: "center",
     },
+    imagemSlider: {
+        height: '100%',
+        alignSelf: "center",
+    },
+    container: {
+        flex: 1,
+    },
+    page: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 });
 
 export default estilosProdutos;
